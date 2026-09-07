@@ -19,35 +19,71 @@ const text = (x, y, t, size = 12, extra = "") => `<text x="${x}" y="${y}" font-f
 const label = (x, y, t) => text(x, y, t, 10, `fill="${MUTED}" font-family="Geist Mono, monospace" font-weight="700"`);
 
 export const illustrations = {
-  // Course cover: a phone wireframe becoming a designed screen, with a palette beside it
+  // Course cover: centered phone with framed UI/UX type, floating widgets and soft gradient blobs
   course: svg(`
-    <path d="M118 120 C 150 120, 150 120, 182 120" stroke="${A2}" stroke-width="3" stroke-dasharray="6 6" fill="none"/>
-    <path d="M176 114 L 186 120 L 176 126" stroke="${A}" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-    <rect x="30" y="34" width="90" height="172" rx="18" fill="#fff" stroke="${A2}" stroke-width="2"/>
-    <rect x="44" y="56" width="62" height="12" rx="6" fill="${SOFT}"/>
-    <rect x="44" y="76" width="62" height="44" rx="8" fill="none" stroke="${A2}" stroke-dasharray="4 4"/>
-    <rect x="44" y="128" width="40" height="8" rx="4" fill="${SOFT}"/>
-    <rect x="44" y="142" width="54" height="8" rx="4" fill="${SOFT}"/>
-    <rect x="44" y="176" width="62" height="18" rx="9" fill="none" stroke="${A2}"/>
-    ${label(30, 226, "WIREFRAME")}
-    <rect x="200" y="34" width="90" height="172" rx="18" fill="#fff" stroke="${A}" stroke-width="2"/>
-    <rect x="214" y="56" width="42" height="12" rx="6" fill="${INK}"/>
-    <rect x="214" y="76" width="62" height="44" rx="8" fill="${A2}"/>
-    <circle cx="232" cy="98" r="9" fill="#fff"/>
-    <rect x="214" y="128" width="46" height="8" rx="4" fill="${INK}" opacity="0.7"/>
-    <rect x="214" y="142" width="62" height="8" rx="4" fill="${SOFT}"/>
-    <rect x="214" y="176" width="62" height="18" rx="9" fill="${A}"/>
-    <rect x="228" y="183" width="34" height="4" rx="2" fill="#fff"/>
-    ${label(200, 226, "THIẾT KẾ")}
-    <rect x="304" y="34" width="36" height="172" rx="12" fill="${SOFT2}" stroke="${A2}"/>
-    <circle cx="322" cy="58" r="9" fill="${A}"/>
-    <circle cx="322" cy="84" r="9" fill="${A2}"/>
-    <circle cx="322" cy="110" r="9" fill="${INK}"/>
-    <circle cx="322" cy="136" r="9" fill="${OK}"/>
-    <circle cx="322" cy="162" r="9" fill="${WARN}"/>
-    <circle cx="322" cy="188" r="9" fill="#fff" stroke="${A2}"/>
-    <path d="M150 62 l4 10 l10 4 l-10 4 l-4 10 l-4 -10 l-10 -4 l10 -4 z" fill="${A}"/>
-  `),
+    <defs>
+      <linearGradient id="covB1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#a855f7"/><stop offset="1" stop-color="#ec4899"/></linearGradient>
+      <linearGradient id="covB2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7c3aed"/><stop offset="1" stop-color="#c084fc"/></linearGradient>
+    </defs>
+    <path d="M258 22 c 26 -16 58 -4 60 16 c 2 20 -24 34 -46 28 c -22 -6 -36 -30 -14 -44 Z" fill="url(#covB1)" opacity="0.30"/>
+    <path d="M50 238 c 24 -14 54 -2 56 18 c 2 20 -22 34 -44 28 c -22 -6 -32 -32 -12 -46 Z" fill="url(#covB2)" opacity="0.30"/>
+    <path d="M406 158 c 16 -10 36 -2 38 12 c 2 14 -14 24 -30 20 c -16 -4 -22 -22 -8 -32 Z" fill="url(#covB1)" opacity="0.25"/>
+    <line x1="72" y1="26" x2="72" y2="252" stroke="${A2}" stroke-dasharray="2 6" stroke-width="1.5"/>
+    <rect x="32" y="36" width="80" height="70" rx="16" fill="#fff" stroke="${A2}" stroke-width="1.5"/>
+    <path d="M50 90 A 22 22 0 0 1 94 90" stroke="${SOFT}" stroke-width="8" fill="none" stroke-linecap="round"/>
+    <path d="M50 90 A 22 22 0 0 1 84 71" stroke="url(#covB1)" stroke-width="8" fill="none" stroke-linecap="round"/>
+    <line x1="72" y1="90" x2="83" y2="74" stroke="${INK}" stroke-width="2" stroke-linecap="round"/>
+    <circle cx="72" cy="90" r="3" fill="${INK}"/>
+    <text x="72" y="101" text-anchor="middle" font-family="Geist, sans-serif" font-size="8" font-weight="700" fill="${MUTED}">Hiệu năng</text>
+    <circle cx="52" cy="136" r="14" fill="#fff" stroke="${A2}" stroke-width="1.5"/>
+    <circle cx="52" cy="136" r="4.5" fill="none" stroke="${A}" stroke-width="1.8"/>
+    ${[0, 45, 90, 135, 180, 225, 270, 315].map((d) => `<line x1="${52 + 7 * Math.cos((d * Math.PI) / 180)}" y1="${136 + 7 * Math.sin((d * Math.PI) / 180)}" x2="${52 + 9.5 * Math.cos((d * Math.PI) / 180)}" y2="${136 + 9.5 * Math.sin((d * Math.PI) / 180)}" stroke="${A}" stroke-width="1.8" stroke-linecap="round"/>`).join("")}
+    <circle cx="92" cy="136" r="14" fill="#fff" stroke="${A2}" stroke-width="1.5"/>
+    <circle cx="92" cy="136" r="6.5" fill="none" stroke="${A}" stroke-width="1.8"/>
+    <path d="M92 132 v4.5 h3.5" stroke="${A}" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+    <circle cx="52" cy="176" r="14" fill="#fff" stroke="${A2}" stroke-width="1.5"/>
+    <path d="M45.5 177 l6.5 -6.5 l6.5 6.5 M47 176 v6.5 h10 v-6.5" stroke="${A}" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="92" cy="176" r="14" fill="#fff" stroke="${A2}" stroke-width="1.5"/>
+    <circle cx="92" cy="172.5" r="3.5" fill="none" stroke="${A}" stroke-width="1.8"/>
+    <path d="M85.5 183 c 2.5 -4.5 10.5 -4.5 13 0" stroke="${A}" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+    <circle cx="52" cy="216" r="13" fill="url(#covB1)"/>
+    <path d="M52 209 l2.5 4.5 l4.5 2.5 l-4.5 2.5 l-2.5 4.5 l-2.5 -4.5 l-4.5 -2.5 l4.5 -2.5 z" fill="#fff"/>
+    <rect x="168" y="22" width="124" height="240" rx="22" fill="#fff" stroke="${A}" stroke-width="2.5"/>
+    <rect x="178" y="42" width="104" height="202" rx="12" fill="${SOFT2}"/>
+    <rect x="210" y="30" width="40" height="6" rx="3" fill="${SOFT}"/>
+    <rect x="196" y="64" width="68" height="76" fill="none" stroke="${A}" stroke-width="1.5"/>
+    <text x="230" y="96" text-anchor="middle" font-family="Geist, sans-serif" font-size="26" font-weight="800" fill="${INK}">UI</text>
+    <text x="230" y="128" text-anchor="middle" font-family="Geist, sans-serif" font-size="26" font-weight="800" fill="${INK}">UX</text>
+    <text x="230" y="162" text-anchor="middle" font-family="Geist, sans-serif" font-size="9" font-weight="500" fill="${MUTED}">Thiết kế giao diện</text>
+    ${[222, 230, 238].map((x) => `<circle cx="${x}" cy="176" r="2" fill="${A2}"/>`).join("")}
+    <rect x="196" y="194" width="68" height="20" rx="10" fill="url(#covB1)"/>
+    <text x="230" y="207" text-anchor="middle" font-family="Geist, sans-serif" font-size="8" font-weight="700" fill="#fff">Bắt đầu</text>
+    <rect x="214" y="248" width="32" height="4" rx="2" fill="${A2}"/>
+    <rect x="312" y="36" width="28" height="118" rx="14" fill="#fff" stroke="${A2}" stroke-width="1.5"/>
+    <rect x="322" y="50" width="8" height="8" rx="2" fill="none" stroke="${A}" stroke-width="1.6"/>
+    <circle cx="326" cy="82" r="9" fill="url(#covB1)"/>
+    <circle cx="326" cy="79.5" r="2.5" fill="#fff"/>
+    <path d="M321.5 86.5 c 2 -3.5 7 -3.5 9 0" stroke="#fff" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+    <circle cx="326" cy="110" r="3.5" fill="none" stroke="${A}" stroke-width="1.6"/>
+    <circle cx="326" cy="138" r="3.5" fill="${A2}"/>
+    <rect x="356" y="36" width="16" height="118" rx="8" fill="#fff" stroke="${A2}" stroke-width="1.5"/>
+    <line x1="364" y1="46" x2="364" y2="144" stroke="${SOFT}" stroke-width="4" stroke-linecap="round"/>
+    <line x1="364" y1="46" x2="364" y2="84" stroke="url(#covB2)" stroke-width="4" stroke-linecap="round"/>
+    <circle cx="364" cy="84" r="8" fill="#fff" stroke="${A}" stroke-width="2"/>
+    ${[320, 342, 364].map((x) => `<circle cx="${x}" cy="172" r="7" fill="#fff" stroke="${A2}" stroke-width="1.5"/><circle cx="${x}" cy="172" r="2" fill="${A}"/>`).join("")}
+    <rect x="312" y="190" width="126" height="68" rx="14" fill="#fff" stroke="${A2}" stroke-width="1.5"/>
+    <circle cx="336" cy="218" r="13" fill="none" stroke="${SOFT}" stroke-width="3.5"/>
+    <path d="M336 205 A 13 13 0 0 1 348 222" stroke="url(#covB1)" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+    <circle cx="336" cy="218" r="8" fill="${SOFT}"/>
+    <circle cx="336" cy="215.5" r="2.8" fill="${A}"/>
+    <path d="M331.5 222.5 c 2 -3.5 7 -3.5 9 0" stroke="${A}" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+    <rect x="356" y="204" width="56" height="7" rx="3.5" fill="${INK}" opacity="0.85"/>
+    <rect x="356" y="217" width="44" height="5" rx="2.5" fill="${SOFT}"/>
+    <rect x="356" y="227" width="50" height="5" rx="2.5" fill="${SOFT}" opacity="0.6"/>
+    ${[356, 364, 372, 380, 388].map((x) => `<circle cx="${x}" cy="245" r="2" fill="${WARN}"/>`).join("")}
+    <path d="M148 44 l3 6 l6 3 l-6 3 l-3 6 l-3 -6 l-6 -3 l6 -3 z" fill="${A}"/>
+    <path d="M300 262 l2.5 5 l5 2.5 l-5 2.5 l-2.5 5 l-2.5 -5 l-5 -2.5 l5 -2.5 z" fill="${A2}"/>
+  `, 460, 300),
 
   // 1.1 Food-delivery screen: UI parts called out on the left, UX journey on the right
   foodapp: (() => {
@@ -175,38 +211,42 @@ export const illustrations = {
 
   // 1.7 Colour roles on the same screen, legend on the right
   colorExample: (() => {
-    const P = "#7c3aed", PC = "#e9d5ff", OPC = "#3b0764", SV = "#f3eef9", OUT = "#9a8fb0";
+    const P = "#7c3aed", SC = "#e9dff5", OSC = "#463461", ACC = "#0d7a83", ACCC = "#c9ece9", SV = "#f3eef9", OUT = "#9a8fb0";
     const call = (y, t, ty) => `<line x1="262" y1="${y}" x2="298" y2="${ty ?? y}" stroke="${A}" stroke-width="1.5"/><circle cx="298" cy="${ty ?? y}" r="3" fill="${A}"/><text x="254" y="${y + 4}" text-anchor="end" font-family="Geist, sans-serif" font-size="11" font-weight="700" fill="${INK}">${t}</text>`;
-    const legend = [[P, "Primary", "nút chính"], ["#fff", "On primary", "chữ trên nút"], [PC, "Primary container", "chip đang chọn"], [OPC, "On primary container", "chữ trên chip"], ["#fff", "Surface", "nền màn"], [INK, "On surface", "chữ chính"], [SV, "Surface variant", "nền thẻ"], [OUT, "Outline", "viền ô nhập"], [ERR, "Error", "ô sai, chữ lỗi"], [OK, "Success ", "đã xác nhận"]];
+    const legend = [
+      [P, "Primary · màu chủ", "nút chính, tab đang chọn"],
+      [SC, "Secondary · màu phụ", "chip lọc, nút phụ"],
+      [ACC, "Accent · điểm nhấn", "badge, khuyến mãi · dưới 10%"],
+      [INK, "Text · chữ", "nhạt dần theo vai trò"],
+      [SV, "Background · nền", "nền màn, nền thẻ, viền"],
+      [ERR, "State · trạng thái", "đỏ lỗi · xanh ok · cam chờ"]
+    ];
     return svg(`
       <text x="20" y="18" font-family="Geist, sans-serif" font-size="12" font-weight="800" fill="${A}">Vai trò màu trên màn hình</text>
-      <text x="518" y="18" font-family="Geist, sans-serif" font-size="12" font-weight="800" fill="${A}">Bảng vai trò</text>
+      <text x="518" y="18" font-family="Geist, sans-serif" font-size="12" font-weight="800" fill="${A}">6 nhóm màu</text>
       <rect x="290" y="28" width="180" height="262" rx="20" fill="#fff" stroke="${A}" stroke-width="2"/>
       <text x="304" y="52" font-family="Geist, sans-serif" font-size="11" font-weight="700" fill="${INK}">Xác nhận lịch</text>
-      <rect x="304" y="62" width="152" height="52" rx="10" fill="${SV}"/>
+      <rect x="304" y="62" width="152" height="72" rx="10" fill="${SV}"/>
       <text x="314" y="80" font-family="Geist, sans-serif" font-size="8" font-weight="700" fill="${INK}">BS. Nguyễn An · Thứ Ba 09:30</text>
-      <rect x="314" y="90" width="52" height="14" rx="7" fill="${PC}"/><text x="340" y="100" text-anchor="middle" font-family="Geist, sans-serif" font-size="7" font-weight="700" fill="${OPC}">Nội tổng quát</text>
-      <rect x="370" y="90" width="58" height="14" rx="7" fill="${OK}"/><text x="399" y="100" text-anchor="middle" font-family="Geist, sans-serif" font-size="7" font-weight="700" fill="#fff">Đã xác nhận</text>
-      <text x="304" y="134" font-family="Geist, sans-serif" font-size="7" fill="${MUTED}">Số điện thoại</text>
-      <rect x="304" y="140" width="152" height="22" rx="6" fill="#fff" stroke="${OUT}"/>
-      <text x="312" y="154" font-family="Geist, sans-serif" font-size="8" fill="${INK}">0909 123 45</text>
-      <text x="304" y="184" font-family="Geist, sans-serif" font-size="7" fill="${MUTED}">Email nhận nhắc lịch</text>
-      <rect x="304" y="190" width="152" height="22" rx="6" fill="#fff" stroke="${ERR}" stroke-width="1.5"/>
-      <text x="312" y="204" font-family="Geist, sans-serif" font-size="8" fill="${INK}">an.nguyen@</text>
-      <text x="304" y="222" font-family="Geist, sans-serif" font-size="6.5" fill="${ERR}">Email chưa đúng định dạng</text>
-      <rect x="304" y="234" width="152" height="22" rx="11" fill="${P}"/>
-      <text x="380" y="248" text-anchor="middle" font-family="Geist, sans-serif" font-size="7.5" font-weight="700" fill="#fff">Xác nhận đặt lịch</text>
-      <rect x="304" y="262" width="152" height="20" rx="10" fill="#fff" stroke="${OUT}"/>
-      <text x="380" y="275" text-anchor="middle" font-family="Geist, sans-serif" font-size="7" font-weight="700" fill="${P}">Gọi phòng khám</text>
-      ${call(48, "On surface · chữ chính")}
-      ${call(70, "Surface variant · nền thẻ")}
-      ${call(97, "Primary container + On")}
-      ${call(151, "Outline · viền ô nhập")}
-      ${call(201, "Error · viền và chữ lỗi")}
-      ${call(245, "Primary + On primary")}
-      ${call(272, "Secondary · nút phụ viền")}
-      ${legend.map(([c, name, use], i) => `<rect x="518" y="${30 + i * 25}" width="22" height="16" rx="4" fill="${c}" stroke="${A2}"/><text x="550" y="${42 + i * 25}" font-family="Geist, sans-serif" font-size="10.5" font-weight="700" fill="${INK}">${name}</text><text x="660" y="${42 + i * 25}" font-family="Geist, sans-serif" font-size="9.5" fill="${MUTED}">${use}</text>`).join("")}
-      <text x="518" y="292" font-family="Geist, sans-serif" font-size="10" fill="${MUTED}">Một màu nguồn sinh ra tất cả, trừ Error và Success.</text>
+      <rect x="314" y="90" width="66" height="14" rx="7" fill="${SC}"/><text x="347" y="100" text-anchor="middle" font-family="Geist, sans-serif" font-size="7" font-weight="700" fill="${OSC}">Nội tổng quát</text>
+      <rect x="314" y="110" width="88" height="14" rx="7" fill="${ACCC}"/><text x="358" y="120" text-anchor="middle" font-family="Geist, sans-serif" font-size="7" font-weight="700" fill="${ACC}">−10% khung giờ sáng</text>
+      <text x="304" y="156" font-family="Geist, sans-serif" font-size="7" fill="${MUTED}">Email nhận nhắc lịch</text>
+      <rect x="304" y="162" width="152" height="22" rx="6" fill="#fff" stroke="${ERR}" stroke-width="1.5"/>
+      <text x="312" y="176" font-family="Geist, sans-serif" font-size="8" fill="${INK}">an.nguyen@</text>
+      <text x="304" y="196" font-family="Geist, sans-serif" font-size="6.5" fill="${ERR}">Email chưa đúng định dạng</text>
+      <rect x="304" y="212" width="152" height="22" rx="11" fill="${P}"/>
+      <text x="380" y="226" text-anchor="middle" font-family="Geist, sans-serif" font-size="7.5" font-weight="700" fill="#fff">Xác nhận đặt lịch</text>
+      <rect x="304" y="242" width="152" height="20" rx="10" fill="#fff" stroke="${OUT}"/>
+      <text x="380" y="255" text-anchor="middle" font-family="Geist, sans-serif" font-size="7" font-weight="700" fill="${OSC}">Gọi phòng khám</text>
+      ${call(48, "Text · chữ chính")}
+      ${call(70, "Background · nền thẻ")}
+      ${call(97, "Secondary · chip lọc")}
+      ${call(117, "Accent · nhãn khuyến mãi")}
+      ${call(173, "State · báo lỗi")}
+      ${call(223, "Primary · nút chính")}
+      ${legend.map(([c, name, use], i) => `<rect x="518" y="${34 + i * 34}" width="22" height="16" rx="4" fill="${c}" stroke="${A2}"/><text x="550" y="${46 + i * 34}" font-family="Geist, sans-serif" font-size="10.5" font-weight="700" fill="${INK}">${name}</text><text x="550" y="${58 + i * 34}" font-family="Geist, sans-serif" font-size="9.5" fill="${MUTED}">${use}</text>`).join("")}
+      <text x="518" y="282" font-family="Geist, sans-serif" font-size="10" fill="${MUTED}">Một màu nguồn sinh ra Primary, Secondary và nền.</text>
+      <text x="518" y="294" font-family="Geist, sans-serif" font-size="10" fill="${MUTED}">Accent là màu đối lập. State cố định ở mọi app.</text>
     `, 760, 300);
   })(),
 

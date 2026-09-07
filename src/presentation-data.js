@@ -175,9 +175,10 @@ export const sessions = [
         },
       }),
       slide("theory", "1.6", "Cơ sở thiết kế giao diện UI", "Chọn font thế nào", [
-        "<b>Một font sans-serif</b> cho cả app là đủ. Font thứ hai chỉ khi có lý do rõ, ví dụ tiêu đề serif cho brand.",
-        "Kiểm tra trước khi chọn: <b>đủ dấu tiếng Việt</b> (ơ, ư, ậ, ễ), đủ độ đậm (400, 500, 600, 700), miễn phí trên Google Fonts.",
-        "Gợi ý an toàn: <b>Inter</b> trung tính, <b>Roboto</b> mặc định của Android và Material, <b>Be Vietnam Pro</b> tiếng Việt đẹp, <b>Lexend</b> dễ đọc.",
+        "<b>Chọn theo vai trò</b> (Material 3): thân chữ và nhãn cần font trung tính, dễ đọc (plain); font mang cá tính brand (expressive) nếu có chỉ dành cho tiêu đề lớn. Tối đa 2 font.",
+        "Dễ đọc ở cỡ nhỏ là thứ <b>đo được</b>, không phải cảm tính: x-height cao, khoảng hở nét mở, phân biệt rõ I–l–1 và O–0, nét đều không quá mảnh.",
+        "Kiểm tra kỹ thuật: <b>đủ dấu tiếng Việt</b> (ơ, ư, ậ, ễ), đủ độ đậm (400, 500, 600, 700), license cho phép (Google Fonts an toàn).",
+        "Đừng chốt trên trang giới thiệu font: <b>gõ thử một màn hình thật</b> — câu tiếng Việt đủ dấu, con số, nhãn nút — ở đúng cỡ 14–16px rồi mới so sánh.",
         "Thân chữ 16px, dòng cao 24px. Chữ nhỏ nhất 11–12px. Số quan trọng to và đậm, đơn vị nhỏ.",
       ], "typography"),
       slide("theory", "1.6", "Cơ sở thiết kế giao diện UI", "Quy định Font", [], "none", {
@@ -203,16 +204,15 @@ export const sessions = [
         table: {
           head: ["Nhóm", "Vai trò (Material 3)", "Dùng cho"],
           rows: [
-            ["<b>Primary</b> · màu chủ", "Primary · On primary · Primary container", "Nút chính, tab đang chọn; container cho chip đang chọn"],
-            ["<b>Secondary</b> · màu phụ", "Secondary · Secondary container", "Nút phụ, chip lọc, thẻ ít quan trọng"],
-            ["<b>Tertiary / Accent</b> · bổ trợ", "Tertiary · Tertiary container", "Nhấn tương phản, badge, nhãn khuyến mãi"],
-            ["<b>Error</b> · lỗi", "Error · On error · Error container", "Ô nhập sai, thông báo lỗi, nút xóa"],
-            ["<b>Surface</b> · nền", "Surface · On surface · Surface variant", "Nền màn hình và chữ chính; variant cho nền thẻ, ô nhập"],
-            ["<b>Outline</b> · viền", "Outline · Outline variant", "Viền ô nhập, đường kẻ chia"],
-            ["<b>Semantic</b> · ngữ nghĩa (ngoài M3)", "Success · Warning · Info", "Đã xác nhận, chờ thanh toán, thông tin"]
+            ["<b>Primary</b> · màu chủ", "Primary · On primary · Primary container", "Nút chính, tab đang chọn, chip đang chọn. Mỗi màn một chỗ nổi nhất"],
+            ["<b>Secondary</b> · màu phụ", "Secondary · Secondary container", "Nút phụ, chip lọc, thành phần cần dịu hơn màu chủ"],
+            ["<b>Accent</b> · điểm nhấn (M3: Tertiary)", "Tertiary · Tertiary container", "Badge, nhãn khuyến mãi, điểm nhấn đối lập; dùng dưới 10%"],
+            ["<b>Text</b> · chữ", "On surface · On surface variant · On primary…", "Chữ chính, chữ phụ và chú thích; chữ đặt trên màu nào dùng màu 'On' của nó"],
+            ["<b>Background</b> · nền", "Surface · Surface container · Outline", "Nền màn hình, nền thẻ và ô nhập, viền và đường kẻ chia"],
+            ["<b>State</b> · trạng thái", "Error (M3) · Success · Warning (ngoài M3)", "Đỏ ô nhập sai và nút xóa, xanh đã xác nhận, cam đang chờ — cố định ở mọi app"]
           ]
         },
-        note: "Mỗi màu đi kèm một màu chữ 'On' để chữ đặt lên nó luôn đọc được. Bạn không cần nhớ hết: nhớ Primary, Surface, Outline, Error là dựng được phần lớn màn hình. Nguồn: Material 3, Color roles."
+        note: "Mỗi màu nền có một màu chữ 'On' đi kèm để chữ đặt lên luôn đọc được — đây là cách Material 3 bảo đảm tương phản. Bạn không cần nhớ hết: Primary, Text, Background, Error là dựng được phần lớn màn hình. Nguồn: Material 3, Color roles."
       }),
       slide("theory", "1.6", "Cơ sở thiết kế giao diện UI", "Chọn màu thế nào", [
         "Bắt đầu từ <b>một màu nguồn</b>: lấy từ brand. Chưa có brand thì lấy từ ngành nghề đặc trưng",
